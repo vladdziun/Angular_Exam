@@ -1,20 +1,23 @@
-<h1>* Items *</h1>
-<button [routerLink]="['/']">Home</button>
-<p>{{viewItem.name}}</p>
-<p>{{viewItem.type}}</p>
+<h1>Pet shelter</h1>
+<button [routerLink]="['/pets']">Home</button>
+<p>Details about {{viewItem.name}}</p>
+<p>Pet type: {{viewItem.type}}</p>
+<p>Description: {{viewItem.description}}</p>
 
-<p *ngIf="viewItem.addons.length > 0"> *Addons*:</p>
+<p *ngIf="viewItem.addons.length > 0"> Skills:</p>
 <div *ngFor="let a of viewItem.addons">
-  <p>Name: {{a.name}}</p>
-  <p>Content: {{a.content}}</p>
-  <br>
-  <button [routerLink]="['/view/',viewItem._id]">View</button>
-  <button [routerLink]="['/edit/',viewItem._id]">Edit</button>
-  <button (click)="delete(viewItem._id)">Delete</button>
+  <p>{{a.name}}</p>
+  <p>{{a.content}}</p>
+  <p>{{a.skill3}}</p>
+  <!-- <button [routerLink]="['/view/',viewItem._id]">View</button>
+  <button [routerLink]="['/edit/',viewItem._id]">Edit</button> -->
 </div>
-<p>Add *addon*</p>
+<p>Likes: {{viewItem.likes}}</p>
+<button (click) = "like()">Like</button>
+<button (click)="delete(viewItem._id)">Adopt this pet</button>
+<!-- <p>Add *addon*</p>
 <form (submit)="updateItem()" class="postForm">
 <input type="text" name="addon.name" [(ngModel)]="addon.name"><br>
 <input type="text" name="addon.content" [(ngModel)]="addon.content"><br>
 <button>Add new addon to item</button>
-</form>
+</form> -->

@@ -9,7 +9,7 @@ import { ViewComponent } from './view/view.component';
 const routes: Routes = [
   { path: 'edit/:id',component: EditComponent },
   { path: 'view/:id',component: ViewComponent },
-  { path: '',component: HomeComponent },
+  { path: 'pets',component: HomeComponent },
   { path: 'new',component: NewComponent },
 ];
 

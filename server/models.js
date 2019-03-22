@@ -5,13 +5,16 @@ const
  AddonSchema = new mongoose.Schema({
     name: { 
         type: String, 
-        required: true, 
-        minlength: [3, 'Name cant be less than 3']
+        required: false, 
+       
     },
     content: { 
         type: String, 
-        required: true, 
-        minlength: 3 
+        required: false, 
+    },
+    skill3: { 
+        type: String, 
+        required: false, 
     }
 }, {timestamps:true});
 
@@ -19,15 +22,20 @@ const
  ItemSchema = new mongoose.Schema({
     name: { 
         type: String, 
-        required: true, 
-        minlength: [3, 'Title cant be less than 3']
+        required: [true,'Name is required'], 
+        minlength: [3, 'Name cant be less than 3']
     },
     type: { 
         type: String, 
-        required: true, 
-        minlength: 3 
+        required: [true,'Type is required'], 
+        minlength: [3, 'Type cant be less than 3']
     },
-    age: { 
+    description: { 
+        type: String, 
+        required: [true,'Description is required'], 
+        minlength: [3, 'Description cant be less than 3']
+    },
+    likes: { 
         type: Number, 
         required: false 
     },

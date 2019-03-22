@@ -1,16 +1,25 @@
-<h1>* Items *</h1>
-<button [routerLink]="['/new']">Add a new * item *</button>
-<h3>All *items*: </h3>
-<div *ngFor = "let i of items">
-    <p>Name: {{i.name}}</p>
-    <p>Type: {{i.type}}</p>
-    <p *ngIf = "i.addons.length > 0"> *Addons*:</p>
+<h1>Pets shelter</h1>
+<h2>These pets are looking for a home</h2>
+<button [routerLink]="['/new']">Add a pet to the shelter</button>
+<h3>All pets: </h3>
+<table *ngFor = "let i of items">
+    <tr>
+        <th>Name</th>
+        <th>Type</th> 
+        <th>Actions</th>
+      </tr>
+      <tr>
+          <td>{{i.name}}</td>
+          <td>{{i.type}}</td> 
+          <td><button [routerLink]="['/view/',i._id]">Details</button>
+            <button [routerLink]="['/edit/',i._id]">Edit</button>
+            <!-- <button (click) = "delete(i._id)">Delete</button></td> -->
+        </tr>
+    <!-- <p *ngIf = "i.addons.length > 0"> *Addons*:</p>
     <div *ngFor = "let a of i.addons">
       <p>Name: {{a.name}}</p>
       <p>Content: {{a.content}}</p>
-    </div>
+    </div> -->
     <br>
-    <button [routerLink]="['/view/',i._id]">View</button>
-    <button [routerLink]="['/edit/',i._id]">Edit</button>
-    <button (click) = "delete(i._id)">Delete</button>
-  </div>
+
+  </table>

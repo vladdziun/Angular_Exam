@@ -13,7 +13,8 @@ export class NewComponent implements OnInit {
 
   errors: any = {
     name: "",
-    type: ""
+    type: "",
+    description: ""
   };
 
   constructor(private _httpService: HttpService,
@@ -21,8 +22,8 @@ export class NewComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
-    this.newItem = {name: "", type: "", addons: []}
-    this.newAddon = {name: "",content: ""}
+    this.newItem = {name: "", type: "", description: "", likes: 0, addons: []}
+    this.newAddon = {name: "",content: "", skill3: ""}
     this._route.params.subscribe((params: Params) => {
       this.goNew();
    });
@@ -36,10 +37,10 @@ export class NewComponent implements OnInit {
       if (data['errors'])
       this.errors = data['errors'];
     else
-      this._router.navigate(['/']);
+      this._router.navigate(['/pets']);
     })
-    this.newItem = {name: "", type: ""}
-    this.newAddon = {name: "",content: ""}
+    this.newItem = {name: "", type: "", description: "", likes: 0, addons: []}
+    this.newAddon = {name: "",content: "", skill3: ""}
   }
 
   goNew(){

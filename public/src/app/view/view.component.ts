@@ -9,7 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class ViewComponent implements OnInit {
 
-  viewItem: any = {name: "", type: "", addons: []};
+  viewItem: any = {name: "", type: "", description: "", likes: 0, addons: []};
   addon: any = {name: "", content: ""}
 
   errors: any = {
@@ -41,7 +41,21 @@ export class ViewComponent implements OnInit {
       else
         this._router.navigate(['/']);
     })
-    this.viewItem= { name: "", type: "", addons: [] }
+    this.viewItem= { name: "", type: "", description: "", likes: 0, addons: [] }
+  }
+  delete(id) {
+    this._httpService.deleteOne(id).subscribe(data => {
+      console.log("deleteing item", id)
+     
+    })
+  }
+  like(){
+    this.viewItem.likes++;
+    let id = this._route.snapshot.paramMap.get('id');
+    this._httpService.updateOne(id, this.viewItem).subscribe(data => {
+      console.log("updatingproduct", data);
+    })
+    
   }
 
 }

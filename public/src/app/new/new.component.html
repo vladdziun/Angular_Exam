@@ -1,20 +1,24 @@
-<h1>* Items *</h1>
-<button [routerLink]="['/']">Home</button>
-<p>Add a new * item *</p>
+<h1>Pet shelter</h1>
+<h2>Know of a pet needin a home?</h2>
+<button [routerLink]="['/pets']">Home</button>
+<p>Add a new pet</p>
 <div>
   <p> {{ newItem | json }} </p>
   <form (submit)="addItem()" class="postForm">
-      {{errors.name.message}}
+      <p *ngIf = "errors.name"  style = "color:red">{{errors.name.message}}</p>
     <p>Name: </p>
   <input type="text" name="newItem.name" [(ngModel)]="newItem.name"><br>
-  {{errors.type.message}}
+  <p *ngIf = "errors.type" style = "color:red">{{errors.type.message}}</p>
   <p>Type: </p>
   <input type="text" name="newItem.type" [(ngModel)]="newItem.type"><br>
-  <p>**********************</p>
-  <p>Add *addon*</p>
+  <p *ngIf = "errors.description"  style = "color:red">{{errors.description.message}}</p>
+  <p>Description: </p>
+  <input type="text" name="newItem.description" [(ngModel)]="newItem.description"><br>
+  <p>Add skills (optional):</p>
   <input type="text" name="newAddon.name" [(ngModel)]="newAddon.name"><br>
   <input type="text" name="newAddon.content" [(ngModel)]="newAddon.content"><br>
+  <input type="text" name="newAddon.skill3" [(ngModel)]="newAddon.skill3"><br>
   <button>Submit</button>
 </form>
-  <button [routerLink]="['/']">Cancel</button> 
+  <button [routerLink]="['/pets']">Cancel</button> 
 </div>

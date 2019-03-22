@@ -1,16 +1,21 @@
-<h1>* Items *</h1>
-<button [routerLink]="['/']">Home</button>
-<h3>Edit *Item*</h3>
+<h1>Pet shelter</h1>
+<button [routerLink]="['/pets']">Home</button>
+<h3>Edit this pet</h3>
 <form (submit)="updateItem()" class="postForm">
-  {{errors.name.message}}
+  <p *ngIf="errors.name" style="color:red">{{errors.name.message}}</p>
   <p>Name:</p>
   <input type="text" name="updatedItem.name" [(ngModel)]="updatedItem.name"><br>
-  {{errors.type.message}}
+  <p *ngIf="errors.type" style="color:red">{{errors.type.message}}</p>
   <p>Type: </p>
   <input type="text" name="updatedItem.type" [(ngModel)]="updatedItem.type"><br>
+  <p *ngIf="errors.description" style="color:red">{{errors.description.message}}</p>
+  <p>Description: </p>
+  <input type="text" name="updatedItem.description" [(ngModel)]="updatedItem.description"><br>
+  <p>Skills:</p>
   <div *ngFor="let a of updatedItem.addons">
     <input type="text" name="a.name" [(ngModel)]="a.name"><br>
     <input type="text" name="a.content" [(ngModel)]="a.content"><br>
+    <input type="text" name="a.skill3" [(ngModel)]="a.skill3"><br>
   </div>
   <button>Submit</button>
 </form>
