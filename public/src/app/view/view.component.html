@@ -13,7 +13,7 @@
   <button [routerLink]="['/edit/',viewItem._id]">Edit</button> -->
 </div>
 <p>Likes: {{viewItem.likes}}</p>
-<button (click) = "like()">Like</button>
+<button (click) = "like()" *ngIf = "!isLiked">Like</button>
 <button (click)="delete(viewItem._id)">Adopt this pet</button>
 <!-- <p>Add *addon*</p>
 <form (submit)="updateItem()" class="postForm">

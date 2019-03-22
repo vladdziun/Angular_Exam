@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 mongoose.connect('mongodb://localhost/exam_db', {useNewUrlParser:true});
 
 const 
@@ -22,6 +23,7 @@ const
  ItemSchema = new mongoose.Schema({
     name: { 
         type: String, 
+        unique: true,
         required: [true,'Name is required'], 
         minlength: [3, 'Name cant be less than 3']
     },
@@ -45,6 +47,7 @@ const
     // },
     addons: [AddonSchema]
 }, {timestamps:true});
+ItemSchema.plugin(uniqueValidator);
 
 module.exports ={
  Item: mongoose.model('Item', ItemSchema),

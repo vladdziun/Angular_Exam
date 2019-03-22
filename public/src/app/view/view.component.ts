@@ -16,6 +16,8 @@ export class ViewComponent implements OnInit {
     name: "",
     type: ""
   };
+  
+  isLiked = false;
 
   constructor(private _httpService: HttpService,
     private _route: ActivatedRoute,
@@ -54,6 +56,7 @@ export class ViewComponent implements OnInit {
     let id = this._route.snapshot.paramMap.get('id');
     this._httpService.updateOne(id, this.viewItem).subscribe(data => {
       console.log("updatingproduct", data);
+      this.isLiked = true;
     })
     
   }

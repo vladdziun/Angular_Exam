@@ -3,7 +3,7 @@ const Model = require('./models.js');
 module.exports = {
   
   getAll: (req, res) => {
-    Model.Item.find()
+    Model.Item.find().sort('type')
       .then(data => console.log(data) || res.json(data))
       .catch(err => console.log(err) || res.json(err));
   },
@@ -38,7 +38,7 @@ module.exports = {
   update: (req, res) => {
     const DATA = req.body;
     const ID = req.params.id;
-    Model.Item.findOneAndUpdate({_id: ID}, DATA, {runValidators:true, new:true})
+    Model.Item.findOneAndUpdate({_id: ID}, DATA, {new:true})
       .then(data => res.json(data))
       .catch(err => res.json(err));
   }

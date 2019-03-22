@@ -30,6 +30,8 @@ export class NewComponent implements OnInit {
   }
 
   addItem() {
+    this.newItem.type= this.newItem.type.toLowerCase();
+    console.log(this.newItem.type);
     this.newItem.addons.push(this.newAddon);
     this._httpService.addNew(this.newItem).subscribe(data => {
      
