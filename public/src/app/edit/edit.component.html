@@ -1,0 +1,16 @@
+<h1>* Items *</h1>
+<button [routerLink]="['/']">Home</button>
+<h3>Edit *Item*</h3>
+<form (submit)="updateItem()" class="postForm">
+  {{errors.name.message}}
+  <p>Name:</p>
+  <input type="text" name="updatedItem.name" [(ngModel)]="updatedItem.name"><br>
+  {{errors.type.message}}
+  <p>Type: </p>
+  <input type="text" name="updatedItem.type" [(ngModel)]="updatedItem.type"><br>
+  <div *ngFor="let a of updatedItem.addons">
+    <input type="text" name="a.name" [(ngModel)]="a.name"><br>
+    <input type="text" name="a.content" [(ngModel)]="a.content"><br>
+  </div>
+  <button>Submit</button>
+</form>

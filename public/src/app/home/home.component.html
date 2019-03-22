@@ -1,0 +1,16 @@
+<h1>* Items *</h1>
+<button [routerLink]="['/new']">Add a new * item *</button>
+<h3>All *items*: </h3>
+<div *ngFor = "let i of items">
+    <p>Name: {{i.name}}</p>
+    <p>Type: {{i.type}}</p>
+    <p *ngIf = "i.addons.length > 0"> *Addons*:</p>
+    <div *ngFor = "let a of i.addons">
+      <p>Name: {{a.name}}</p>
+      <p>Content: {{a.content}}</p>
+    </div>
+    <br>
+    <button [routerLink]="['/view/',i._id]">View</button>
+    <button [routerLink]="['/edit/',i._id]">Edit</button>
+    <button (click) = "delete(i._id)">Delete</button>
+  </div>

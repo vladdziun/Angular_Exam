@@ -1,0 +1,20 @@
+<h1>* Items *</h1>
+<button [routerLink]="['/']">Home</button>
+<p>{{viewItem.name}}</p>
+<p>{{viewItem.type}}</p>
+
+<p *ngIf="viewItem.addons.length > 0"> *Addons*:</p>
+<div *ngFor="let a of viewItem.addons">
+  <p>Name: {{a.name}}</p>
+  <p>Content: {{a.content}}</p>
+  <br>
+  <button [routerLink]="['/view/',viewItem._id]">View</button>
+  <button [routerLink]="['/edit/',viewItem._id]">Edit</button>
+  <button (click)="delete(viewItem._id)">Delete</button>
+</div>
+<p>Add *addon*</p>
+<form (submit)="updateItem()" class="postForm">
+<input type="text" name="addon.name" [(ngModel)]="addon.name"><br>
+<input type="text" name="addon.content" [(ngModel)]="addon.content"><br>
+<button>Add new addon to item</button>
+</form>

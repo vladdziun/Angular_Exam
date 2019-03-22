@@ -1,0 +1,20 @@
+<h1>* Items *</h1>
+<button [routerLink]="['/']">Home</button>
+<p>Add a new * item *</p>
+<div>
+  <p> {{ newItem | json }} </p>
+  <form (submit)="addItem()" class="postForm">
+      {{errors.name.message}}
+    <p>Name: </p>
+  <input type="text" name="newItem.name" [(ngModel)]="newItem.name"><br>
+  {{errors.type.message}}
+  <p>Type: </p>
+  <input type="text" name="newItem.type" [(ngModel)]="newItem.type"><br>
+  <p>**********************</p>
+  <p>Add *addon*</p>
+  <input type="text" name="newAddon.name" [(ngModel)]="newAddon.name"><br>
+  <input type="text" name="newAddon.content" [(ngModel)]="newAddon.content"><br>
+  <button>Submit</button>
+</form>
+  <button [routerLink]="['/']">Cancel</button> 
+</div>
